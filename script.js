@@ -66,10 +66,19 @@ function printLibrary(){
 
     }
     books.appendChild(booksListAfter)
+    removeButtonEvents()
 }
 
 printLibrary()
-
+function removeButtonEvents(){
 const removeButtons = document.querySelectorAll('.removeButton')
-  
+let removeButtonsArray = Array.from(removeButtons)
+
+removeButtonsArray.forEach((button) => {
+    button.addEventListener('click', () => {
+            myLibrary.splice(removeButtonsArray.indexOf(button),1);
+            printLibrary()
+    });
+  });
+}
 
