@@ -12,7 +12,10 @@ function Book(title, author, pages, status) {
         }
   }
   
-//   const book1 = new Book('kolobok', 'unknown author', '10', false)
+   const book1 = new Book('Peace and War', 'Lev Tolstoj', '1000', false)
+   const book2 = new Book('1984', 'Orwell', '500', true)
+   myLibrary.push(book1)
+   myLibrary.push(book2)
 
 //   console.log(book1.info())
 
@@ -23,7 +26,6 @@ function addBookToLibrary() {
       const book = new Book(name[0].value, name[1].value, name[2].value, status)
       myLibrary.push(book)
   }
-
 
 
 //  addBookToLibrary(book1);
@@ -40,16 +42,12 @@ const newBookButton = document.querySelector('.new-book')
 const addBookButton = document.querySelector('.add-book-button')
 
 newBookButton.addEventListener('click', () => {
-    addBook.style.display = ('flex')
-    
+    addBook.style.display = ('flex')   
 })
 
 addBookButton.addEventListener('click', ()=>{
-    
     addBookToLibrary()
-    
     printLibrary()
-    
     addBook.style.display = ('none')
 })
 
@@ -59,10 +57,19 @@ function printLibrary(){
     let booksListAfter = document.createElement('books-list')
     for(let unit of myLibrary){
         let paraBook = document.createElement('p') 
-        paraBook.textContent = unit.info()
+        paraBook.textContent = (myLibrary.indexOf(unit) + 1) + ') ' + unit.info()
         booksListAfter.appendChild(paraBook)
+        let removeButton = document.createElement('button')
+        removeButton.textContent = 'Remove Book'
+        removeButton.classList.toggle('removeButton')
+        booksListAfter.appendChild(removeButton)
+
     }
     books.appendChild(booksListAfter)
 }
+
+printLibrary()
+
+const removeButtons = document.querySelectorAll('.removeButton')
   
 
