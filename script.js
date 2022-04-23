@@ -16,31 +16,53 @@ function Book(title, author, pages, status) {
 
 //   console.log(book1.info())
 
-// function addBookToLibrary() {
-//       let name = prompt(`Enter book's name`)
-//       let author = prompt(`Enter author's name`)
-//       let pages = prompt('Enter quantity of pages')
-//       let status = prompt('Have you read the book?(y/n)')
-      
-//       status === 'y' ? status = true : status = false; 
-//       const book = new Book(name, author, pages, status)
-      
-//       myLibrary.push(book)
-//   }
-const books = document.querySelector('.books')
+function addBookToLibrary() {
+      const name = document.querySelectorAll('.book-input')  
+      let status
+      name[3].value === 'yes' ? status = true : status = false; 
+      const book = new Book(name[0].value, name[1].value, name[2].value, status)
+      myLibrary.push(book)
+  }
+
+
 
 //  addBookToLibrary(book1);
-let i = true;
+// let i = true;
 // while (i) {
 //     addBookToLibrary()
 //     let flag = prompt('One more book(y/n)?')
 //     if (flag !== 'y') i = !i;
 // }
 
-  for(let unit of myLibrary){
-    let paraBook = document.createElement('p') 
-    paraBook.textContent = unit.info()
-    books.appendChild(paraBook)
-  }
+const books = document.querySelector('.books')
+const addBook = document.querySelector('.add-book')
+const newBookButton = document.querySelector('.new-book')  
+const addBookButton = document.querySelector('.add-book-button')
+
+newBookButton.addEventListener('click', () => {
+    addBook.style.display = ('flex')
+    
+})
+
+addBookButton.addEventListener('click', ()=>{
+    
+    addBookToLibrary()
+    
+    printLibrary()
+    
+    addBook.style.display = ('none')
+})
+
+function printLibrary(){
+    let booksListBefore = document.querySelector('books-list')
+    books.removeChild(booksListBefore)
+    let booksListAfter = document.createElement('books-list')
+    for(let unit of myLibrary){
+        let paraBook = document.createElement('p') 
+        paraBook.textContent = unit.info()
+        booksListAfter.appendChild(paraBook)
+    }
+    books.appendChild(booksListAfter)
+}
   
 

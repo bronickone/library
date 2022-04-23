@@ -1,0 +1,10 @@
+*{
+    box-sizing: border-box;
+}
+
+.add-book{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+     display: none; 
+}

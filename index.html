@@ -9,20 +9,24 @@
     <title>Library</title>
 </head>
 <body> 
-    <button class = "new-book">NEW BOOK</button>
-    <form action = "#" class =" add-book">
-        <label for = "name">Enter book's name</label>
-        <input type = "text" id = "name" class = "add-name" required>
-        <label for = "author">Enter book's author</label>
-        <input type = "text" id = "author" class = "add-author" required>
-        <label for = "pages">Number of pages</label>
-        <input type = "number" id = "pages" class = "add-pages" required>
-        <label for = "read-flag">Have you read the book already?</label>
-        <input type = "text" class = "read-flag" id = "read-flag" pattern = (yes|no) required>
-        <button type="submit">Ready</button>
-    </form>
-    <div class="books">
-
+    <div class="left-side">
+        <button class = "new-book">NEW BOOK</button>
+        <form action = "#" class ="add-book">
+            <label for = "name">Enter book's name</label>
+            <input type = "text" id = "name" class = "book-input" required>
+            <label for = "author">Enter book's author</label>
+            <input type = "text" id = "author" class = "book-input" required>
+            <label for = "pages">Number of pages</label>
+            <input type = "number" id = "pages" class = "book-input" required>
+            <label for = "read-flag">Have you read the book already?</label>
+            <input type = "text" id = "read-flag" pattern = (yes|no)  class = "book-input" required>
+            <button type="submit" class = "add-book-button">Ready</button>
+        </form>
+    </div>
+    <div class="right-side">
+        <div class="books">
+        <books-list></books-list>
+        </div>
     </div>
 
 
