@@ -3,8 +3,13 @@
 }
 
 .add-book{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     width: 300px;
      display: none; 
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
