@@ -6,8 +6,9 @@ function Book(title, author, pages, status) {
     this.pages = pages
     this.status = status
     this.info = function() {
-        let readOrNot = 'not read yet';
-        if (status) readOrNot = 'read already';  
+        let readOrNot;
+       
+        (this.status) ? readOrNot = 'read already':readOrNot = 'not read yet' 
         return (`${title} by ${author}, ${pages} pages, ${readOrNot}`)
         }
   }
@@ -59,26 +60,58 @@ function printLibrary(){
         let paraBook = document.createElement('p') 
         paraBook.textContent = (myLibrary.indexOf(unit) + 1) + ') ' + unit.info()
         booksListAfter.appendChild(paraBook)
+        let statusButton = document.createElement('button')
         let removeButton = document.createElement('button')
-        removeButton.textContent = 'Remove Book'
+        removeButton.textContent = '   X   '
+        statusButton.textContent = 'READ'
+        statusButton.classList.toggle('statusButton')
         removeButton.classList.toggle('removeButton')
+        booksListAfter.appendChild(statusButton)
         booksListAfter.appendChild(removeButton)
-
     }
+
     books.appendChild(booksListAfter)
     removeButtonEvents()
+    statusButtonEvents()
 }
 
 printLibrary()
-function removeButtonEvents(){
-const removeButtons = document.querySelectorAll('.removeButton')
-let removeButtonsArray = Array.from(removeButtons)
 
-removeButtonsArray.forEach((button) => {
-    button.addEventListener('click', () => {
-            myLibrary.splice(removeButtonsArray.indexOf(button),1);
-            printLibrary()
+// function buttonEvents(buttonsName){                                       //try to create universal buttons function
+//     const buttonsName = document.querySelectorAll('.' + `${buttonsName}`)
+//     let buttonsArray = Array.from(buttons)
+// }
+
+
+
+function removeButtonEvents(){
+    const removeButtons = document.querySelectorAll('.removeButton')
+    let removeButtonsArray = Array.from(removeButtons)
+
+    removeButtonsArray.forEach((button) => {
+        button.addEventListener('click', () => {
+                myLibrary.splice(removeButtonsArray.indexOf(button),1);
+                printLibrary()
+        });
     });
-  });
 }
 
+function statusButtonEvents(){
+    const statusButtons = document.querySelectorAll('.statusButton')
+    let statusButtonsArray = Array.from(statusButtons)
+    
+    statusButtonsArray.forEach((button) => {
+        button.addEventListener('click', () => {
+
+                // let localStatus = myLibrary[statusButtonsArray.indexOf(button)].status;
+                // localStatus = !(localStatus)
+                // myLibrary[statusButtonsArray.indexOf(button)].status = localStatus;
+                myLibrary[statusButtonsArray.indexOf(button)].status = 
+                !(myLibrary[statusButtonsArray.indexOf(button)].status)
+                
+                printLibrary()
+        });
+    });
+}
+
+   
