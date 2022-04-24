@@ -7,6 +7,7 @@ function Book(title, author, pages, status) {
     this.author = author
     this.pages = pages
     this.status = status
+  
     // this.info = function() {
     //     let readOrNot = 'not read yet'
        
@@ -14,7 +15,10 @@ function Book(title, author, pages, status) {
     //     return (`${title} by ${author}, ${pages} pages, ${readOrNot}`)
     //     }
   }
-  
+
+//   Book.prototype.toggleStatus = function() {
+//     this.status = (!this.status)  
+//   }
 
   //some initaial books 
 
@@ -49,7 +53,7 @@ const addBookButton = document.querySelector('.add-book-button')
 
 newBookButton.addEventListener('click', () => {  
     
-    for (i = 0; i < 3; i++){                                        //Clear input fields. need external clear(?)
+    for (i = 0; i < 3; i++){                                        //Clear input fields. need external clear function(?)
         bookInput[i].value = ''
     }                       
     addBook.style.display = ('flex')   
@@ -72,21 +76,15 @@ newBookButton.addEventListener('click', () => {
 // submit form button event listener
 
 addBookButton.addEventListener('click', (event) => {
-    // !event.preventDefault() 
     //  formValidation()    
-   
     for (i = 0; i < 3; i++){
         // if (bookInput[i].value) errorMsg[i].textContent = ''
         if (!bookInput[i].value) return
-            // errorMsg[i].textContent = '*Fill this field'
-        
-    }                                                              
-    addBookToLibrary()
-                           
+            // errorMsg[i].textContent = '*Fill this field'  
+    }
+
+    addBookToLibrary()                     
     printLibrary()
-
-   
-
     addBook.style.display = ('none')
 })
 
@@ -96,24 +94,27 @@ addBookButton.addEventListener('click', (event) => {
 
 
 function printLibrary(){                                              
-    const booksListBefore = document.querySelector('books-list')
+    const booksListBefore = document.querySelector('.books-list')
     books.removeChild(booksListBefore)
     
-    const booksListAfter = document.createElement('books-list')
+    const booksListAfter = document.createElement('div')
+    booksListAfter.classList.add('books-list')
     
     for(let unit of myLibrary){                                       //create cards 
-
+        const card = document.createElement('div')
         const bookTitle = document.createElement('div')
         const bookAuthor = document.createElement('div')
         const bookPages = document.createElement('div')
         const statusButton = document.createElement('button')
         const removeButton = document.createElement('button')
         
+        card.classList.add('card')
         bookTitle.classList.add('bookTitle')
         bookAuthor.classList.add('bookAuthor')
         bookPages.classList.add('bookPages')
         statusButton.classList.add('statusButton')
         removeButton.classList.add('removeButton')
+        
 
         bookTitle.textContent = unit.title
         bookAuthor.textContent = 'by ' + unit.author
@@ -122,22 +123,25 @@ function printLibrary(){
         if (unit.status) status = 'READ'
         statusButton.textContent = status
         removeButton.textContent = 'X'
-        
 
-
-        // paraBook.textContent = (myLibrary.indexOf(unit) + 1) + '. ' + unit.info()
-        booksListAfter.appendChild(bookTitle)
-        booksListAfter.appendChild(bookAuthor)
-        booksListAfter.appendChild(bookPages)
-        booksListAfter.appendChild(statusButton)
-        booksListAfter.appendChild(removeButton)   
+        card.appendChild(bookTitle)
+        card.appendChild(bookAuthor)
+        card.appendChild(bookPages)
+        card.appendChild(statusButton)
+        card.appendChild(removeButton)
+        booksListAfter.appendChild(card)
+        console.log(unit)    
+        // statusButton.addEventListener('click', () => {
+        //     unit.toggleStatus()
+        //     console.log(unit)
+        //     printLibrary()
+        // })    
     }
-
+    
     books.appendChild(booksListAfter)
     removeButtonEvents()
-    statusButtonEvents()
+    statusButtonEvents()   
 }
-
 
 printLibrary()
 
@@ -150,12 +154,18 @@ printLibrary()
 
 //function for create event listeners of remove buttons list
 
-function removeButtonEvents(){                                      
+function removeButtonEvents(){  
+                                       
     const removeButtons = document.querySelectorAll('.removeButton')
+    console.log(removeButtons)
     let removeButtonsArray = Array.from(removeButtons)
+    console.log(removeButtonsArray)
+    
 
     removeButtonsArray.forEach((button) => {
         button.addEventListener('click', () => {
+                console.log(removeButtonsArray)
+                console.log(removeButtons)
                 myLibrary.splice(removeButtonsArray.indexOf(button),1);
                 printLibrary()
         });
