@@ -1,6 +1,7 @@
-let myLibrary = [];
+let myLibrary = [];                  
 
-function Book(title, author, pages, status) {
+
+function Book(title, author, pages, status) {               //book consrtuctor
     this.title = title
     this.author = author
     this.pages = pages
@@ -13,56 +14,52 @@ function Book(title, author, pages, status) {
         }
   }
   
-   const book1 = new Book('Peace and War', 'Lev Tolstoj', '1000', false)
+
+
+   const book1 = new Book('Peace and War', 'Lev Tolstoj', '1000', false)     //some initaial books 
    const book2 = new Book('1984', 'Orwell', '500', true)
    myLibrary.push(book1)
    myLibrary.push(book2)
 
-//   console.log(book1.info())
 
-function addBookToLibrary() {
+
+function addBookToLibrary() {                                              //  add book to library function
       const name = document.querySelectorAll('.book-input')  
       let status
-      name[3].value === 'yes' ? status = true : status = false; 
+      name[3].checked ? status = true : status = false; 
       const book = new Book(name[0].value, name[1].value, name[2].value, status)
       myLibrary.push(book)
   }
 
-
-//  addBookToLibrary(book1);
-// let i = true;
-// while (i) {
-//     addBookToLibrary()
-//     let flag = prompt('One more book(y/n)?')
-//     if (flag !== 'y') i = !i;
-// }
 
 const books = document.querySelector('.books')
 const addBook = document.querySelector('.add-book')
 const newBookButton = document.querySelector('.new-book')  
 const addBookButton = document.querySelector('.add-book-button')
 
-newBookButton.addEventListener('click', () => {
+newBookButton.addEventListener('click', () => {                         // open new book form button event listener
     addBook.style.display = ('flex')   
 })
 
-addBookButton.addEventListener('click', ()=>{
+addBookButton.addEventListener('click', ()=>{                          // submit form button event listener
     addBookToLibrary()
     printLibrary()
     addBook.style.display = ('none')
 })
 
-function printLibrary(){
+function printLibrary(){                                              // display whole library function( mb need optimization) 
     let booksListBefore = document.querySelector('books-list')
     books.removeChild(booksListBefore)
+    
     let booksListAfter = document.createElement('books-list')
+    
     for(let unit of myLibrary){
         let paraBook = document.createElement('p') 
-        paraBook.textContent = (myLibrary.indexOf(unit) + 1) + ') ' + unit.info()
+        paraBook.textContent = (myLibrary.indexOf(unit) + 1) + '. ' + unit.info()
         booksListAfter.appendChild(paraBook)
         let statusButton = document.createElement('button')
         let removeButton = document.createElement('button')
-        removeButton.textContent = '   X   '
+        removeButton.textContent = 'X'
         statusButton.textContent = 'READ'
         statusButton.classList.toggle('statusButton')
         removeButton.classList.toggle('removeButton')
@@ -75,6 +72,7 @@ function printLibrary(){
     statusButtonEvents()
 }
 
+
 printLibrary()
 
 // function buttonEvents(buttonsName){                                       //try to create universal buttons function
@@ -84,7 +82,7 @@ printLibrary()
 
 
 
-function removeButtonEvents(){
+function removeButtonEvents(){                                      //function for create event listeners of remove buttons list
     const removeButtons = document.querySelectorAll('.removeButton')
     let removeButtonsArray = Array.from(removeButtons)
 
@@ -96,7 +94,7 @@ function removeButtonEvents(){
     });
 }
 
-function statusButtonEvents(){
+function statusButtonEvents(){                                      //function for create event listeners of status buttons list
     const statusButtons = document.querySelectorAll('.statusButton')
     let statusButtonsArray = Array.from(statusButtons)
     
