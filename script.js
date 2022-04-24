@@ -116,14 +116,14 @@ function printLibrary(){
         removeButton.classList.add('removeButton')
         
 
-        bookTitle.textContent = unit.title
-        bookAuthor.textContent = 'by ' + unit.author
+        bookTitle.textContent =  unit.title
+        bookAuthor.textContent = 'Author:  ' + unit.author
         bookPages.textContent = unit.pages + ' pages'
         let status = 'NOT READ'
-        statusButton.style.backgroundColor = 'red'
+        statusButton.style.backgroundColor = 'rgb(177, 88, 88)'
         if (unit.status) {
             status = 'READ'
-            statusButton.style.backgroundColor = 'green'
+            statusButton.style.backgroundColor = 'rgb(41, 75, 40)'
         }
         statusButton.textContent = status
         removeButton.textContent = 'DELETE'

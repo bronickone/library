@@ -1,21 +1,55 @@
 *{
     box-sizing: border-box;
+    font-family: Roboto, serif;
+}
+
+body{
+    
+
 }
 
 .card button{
-    margin:2px;
-    width: 6rem;
-    height: 1.5rem;
-    border-radius: 5px;
-    border-style: 0;
+   
+    width: 10rem;
+    height: 2rem;
+    
+    color: white;
+    background-color: rgb(44, 44, 44);
+
+}
+.add-book-button{
+    width: 10rem;
+    height: 4rem;
 
 }
 
-.card button:hover{
+button{
+    margin:2px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow:  2px 2px 5px rgba(90, 90, 90, 0.671);
+
+}
+.new-book{
+    
+    width: 7rem;
+    height: 2rem;
+   
+    color: white;
+    background-color: rgb(136, 136, 136);
+}
+
+
+button:hover{
     cursor: pointer;
+}
+button:active{
+    box-shadow:  none;
 }
 
 .add-book{
+    padding: 4rem;
+    border-radius: 5px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -26,6 +60,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    gap:10px;
+    height: 270px;
     width: 200px;
     background-color: rgb(49, 112, 112);
      display: none; 
@@ -46,16 +82,19 @@
     padding: 1.5rem;
     display: grid;
     /* grid-template-rows: repeat(2, 1fr); */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap:1rem;
     
 }
+
 .card {
+    padding: 1rem;
+    color: white;
     display: grid;
     justify-items: center;
     z-index: 0;
-    width:200px;
-    height:150px;
+    width:250px;
+    height:200px;
     position: relative;
     background-color: #bdd3fc;
     color: black;
@@ -63,6 +102,10 @@
     box-shadow:  2px 2px 5px rgba(90, 90, 90, 0.671);
 }
 
+.input-flag{
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
 
 
 .errorMsg{
