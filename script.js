@@ -120,9 +120,13 @@ function printLibrary(){
         bookAuthor.textContent = 'by ' + unit.author
         bookPages.textContent = unit.pages + ' pages'
         let status = 'NOT READ'
-        if (unit.status) status = 'READ'
+        statusButton.style.backgroundColor = 'red'
+        if (unit.status) {
+            status = 'READ'
+            statusButton.style.backgroundColor = 'green'
+        }
         statusButton.textContent = status
-        removeButton.textContent = 'X'
+        removeButton.textContent = 'DELETE'
 
         card.appendChild(bookTitle)
         card.appendChild(bookAuthor)
