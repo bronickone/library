@@ -6,9 +6,9 @@ function Book(title, author, pages, status) {
     this.pages = pages
     this.status = status
     this.info = function() {
-        let readOrNot;
+        let readOrNot = 'not read yet'
        
-        (this.status) ? readOrNot = 'read already':readOrNot = 'not read yet' 
+        if (this.status)  readOrNot = 'read already'
         return (`${title} by ${author}, ${pages} pages, ${readOrNot}`)
         }
   }
