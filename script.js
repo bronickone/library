@@ -1,7 +1,8 @@
 let myLibrary = [];                  
 
+//book consrtuctor     
 
-function Book(title, author, pages, status) {                                  //book consrtuctor            
+function Book(title, author, pages, status) {                                         
     this.title = title
     this.author = author
     this.pages = pages
@@ -15,23 +16,25 @@ function Book(title, author, pages, status) {                                  /
   }
   
 
+  //some initaial books 
 
-   const book1 = new Book('Peace and War', 'Lev Tolstoj', '1000', false)     //some initaial books 
+   const book1 = new Book('Peace and War', 'Lev Tolstoj', '1000', false)     
    const book2 = new Book('1984', 'Orwell', '500', true)
    myLibrary.push(book1)
    myLibrary.push(book2)
 
 
+  //  add book to library function
+  const bookInput = document.querySelectorAll('.book-input')
+//   const errorMsg = document.querySelectorAll('.errorMsg')
 
-function addBookToLibrary() {                                              //  add book to library function
-      const name = document.querySelectorAll('.book-input')  
-    //   let status
-    //   name[3].checked ? status = true : status = false; 
+function addBookToLibrary() {                                              
+      
       const book = new Book(
-          name[0].value, 
-          name[1].value, 
-          name[2].value, 
-          name[3].checked)
+        bookInput[0].value, 
+        bookInput[1].value, 
+        bookInput[2].value, 
+        bookInput[3].checked)
 
       myLibrary.push(book)
   }
@@ -42,23 +45,57 @@ const addBook = document.querySelector('.add-book')
 const newBookButton = document.querySelector('.new-book')  
 const addBookButton = document.querySelector('.add-book-button')
 
-newBookButton.addEventListener('click', () => {                         // open new book form button event listener
+// open new book form button event listener
+
+newBookButton.addEventListener('click', () => {  
+    
+    for (i = 0; i < 3; i++){                                        //Clear input fields. need external clear(?)
+        bookInput[i].value = ''
+    }                       
     addBook.style.display = ('flex')   
 })
 
-function formValidation(){
-    confPassword.setCustomValidity("Passwords don't match");
-}
 
-addBookButton.addEventListener('click', ()=>{                          // submit form button event listener
+
+// function formValidation(){
+    
+//     for (i = 0; i < 3; i++){
+//         bookInput[i].setCustomValidity("Fill the field");
+//         // if (!bookInput[i].value) formValidation()
+//     }
+//     for (i = 0; i < 3; i++){
+//         // bookInput[i].setCustomValidity("Fill the field");
+//         if (!bookInput[i].value) formValidation()
+//     }
+// }
+
+// submit form button event listener
+
+addBookButton.addEventListener('click', (event) => {
+    // !event.preventDefault() 
+    //  formValidation()    
+   
+    for (i = 0; i < 3; i++){
+        // if (bookInput[i].value) errorMsg[i].textContent = ''
+        if (!bookInput[i].value) return
+            // errorMsg[i].textContent = '*Fill this field'
+        
+    }                                                              
     addBookToLibrary()
+                           
     printLibrary()
+
+   
+
     addBook.style.display = ('none')
 })
 
 
 
-function printLibrary(){                                              // display whole library function( mb need optimization) 
+// display whole library function( mb need optimization) 
+
+
+function printLibrary(){                                              
     const booksListBefore = document.querySelector('books-list')
     books.removeChild(booksListBefore)
     
@@ -111,7 +148,9 @@ printLibrary()
 
 
 
-function removeButtonEvents(){                                      //function for create event listeners of remove buttons list
+//function for create event listeners of remove buttons list
+
+function removeButtonEvents(){                                      
     const removeButtons = document.querySelectorAll('.removeButton')
     let removeButtonsArray = Array.from(removeButtons)
 
@@ -123,7 +162,9 @@ function removeButtonEvents(){                                      //function f
     });
 }
 
-function statusButtonEvents(){                                      //function for create event listeners of status buttons list
+//function for create event listeners of status buttons list
+
+function statusButtonEvents(){                                      
     const statusButtons = document.querySelectorAll('.statusButton')
     let statusButtonsArray = Array.from(statusButtons)
     
