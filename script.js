@@ -22,8 +22,8 @@ function Book(title, author, pages, status) {
 
   //some initaial books 
 
-   const book1 = new Book('Peace and War', 'Lev Tolstoj', '1000', false)     
-   const book2 = new Book('1984', 'Orwell', '500', true)
+   const book1 = new Book('Kobzar', 'Taras Shevchenko', '300', false)     
+   const book2 = new Book('1984', 'George Orwell', '500', true)
    myLibrary.push(book1)
    myLibrary.push(book2)
 
@@ -56,8 +56,14 @@ newBookButton.addEventListener('click', () => {
     for (i = 0; i < 3; i++){                                        //Clear input fields. need external clear function(?)
         bookInput[i].value = ''
     }                       
-    addBook.style.display = ('flex')   
+    
+    // hideOnOutsideClick()
+
+    addBook.style.display = ('grid')
+         
 })
+
+
 
 
 
@@ -75,7 +81,7 @@ newBookButton.addEventListener('click', () => {
 
 // submit form button event listener
 
-addBookButton.addEventListener('click', (event) => {
+addBookButton.addEventListener('click', () => {
     //  formValidation()    
     for (i = 0; i < 3; i++){
         // if (bookInput[i].value) errorMsg[i].textContent = ''
@@ -87,6 +93,19 @@ addBookButton.addEventListener('click', (event) => {
     printLibrary()
     addBook.style.display = ('none')
 })
+
+// function for hide form box when click outside
+
+// function hideOnOutsideClick() {
+// document.addEventListener( 'click', (event) => {
+//     const form = document.getElementById('form')
+// 	const withinBoundaries = event.composedPath().includes(form);
+ 
+// 	if ( ! withinBoundaries ) {
+// 		form.style.display = ('none') 
+// 	}
+// })
+// }
 
 
 
@@ -117,7 +136,7 @@ function printLibrary(){
         
 
         bookTitle.textContent =  unit.title
-        bookAuthor.textContent = 'Author:  ' + unit.author
+        bookAuthor.textContent = 'By ' + unit.author
         bookPages.textContent = unit.pages + ' pages'
         let status = 'NOT READ'
         statusButton.style.backgroundColor = 'rgb(177, 88, 88)'
@@ -153,6 +172,15 @@ printLibrary()
 //     const buttonsName = document.querySelectorAll('.' + `${buttonsName}`)
 //     let buttonsArray = Array.from(buttons)
 // }
+
+const closeForm = document.querySelector('.closeForm')
+//close Form button eventListener
+
+closeForm.addEventListener('click', () => {
+    addBook.style.display = ('none')
+  
+})
+
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Pattaya|Qwigley|Quantico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tapestry|Roboto|Pattaya|Qwigley|Quantico">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,8 @@
     <title>Library</title>
 </head>
 <body>
-    <form action = "#" class ="add-book">
+    <form action = "#" class ="add-book" id="form">
+        <div class="closeForm">⮾</div>
         <div class="input-text">
             <label for = "name">Book's title</label>
             <input type = "text" id = "name" class = "book-input" placeholder="Title" required>
@@ -28,11 +29,12 @@
         <!-- <div class="errorMsg"></div> -->
         <div class="input-flag">
             <label for = "read-flag">Read already</label>
-            <input type = "checkbox" id = "read-flag" class = "book-input"  >
+            <input type = "checkbox" id = "read-flag" class = "book-input" >
         </div>
         <button type="submit" class = "add-book-button">Add</button>
     </form>
     <div class="main-container">
+        <div class="header">LIBRARY</div>
         <button class = "new-book">ADD BOOK</button>
         <div class="books">
         <div class="books-list"></div>
