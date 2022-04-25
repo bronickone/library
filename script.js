@@ -7,13 +7,6 @@ function Book(title, author, pages, status) {
     this.author = author
     this.pages = pages
     this.status = status
-  
-    // this.info = function() {
-    //     let readOrNot = 'not read yet'
-       
-    //     if (this.status)  readOrNot = 'read already'
-    //     return (`${title} by ${author}, ${pages} pages, ${readOrNot}`)
-    //     }
   }
 
 //   Book.prototype.toggleStatus = function() {
@@ -30,7 +23,6 @@ function Book(title, author, pages, status) {
 
   //  add book to library function
   const bookInput = document.querySelectorAll('.book-input')
-//   const errorMsg = document.querySelectorAll('.errorMsg')
 
 function addBookToLibrary() {                                              
       
@@ -39,8 +31,7 @@ function addBookToLibrary() {
         bookInput[1].value, 
         bookInput[2].value, 
         bookInput[3].checked)
-
-      myLibrary.push(book)
+        myLibrary.push(book)
   }
 
 
@@ -49,40 +40,45 @@ const addBook = document.querySelector('.add-book')
 const newBookButton = document.querySelector('.new-book')  
 const addBookButton = document.querySelector('.add-book-button')
 
-// open new book form button event listener
+//new book form button event listener
 
 newBookButton.addEventListener('click', () => {  
-    
     for (i = 0; i < 3; i++){                                        //Clear input fields. need external clear function(?)
         bookInput[i].value = ''
-    }                       
-    
+    }
+                  
     // hideOnOutsideClick()
-
-    addBook.style.display = ('grid')
-         
+    addBook.style.display = ('grid')         
 })
 
 
 
 
 
-// function formValidation(){
+function formValidation(){
     
-//     for (i = 0; i < 3; i++){
-//         bookInput[i].setCustomValidity("Fill the field");
-//         // if (!bookInput[i].value) formValidation()
-//     }
+    // for (i = 0; i < 3; i++){
+    //     bookInput[i].setCustomValidity("Fill the field");
+    //     // if (!bookInput[i].value) formValidation()
+    // }
+    
+     
+    
+
 //     for (i = 0; i < 3; i++){
 //         // bookInput[i].setCustomValidity("Fill the field");
 //         if (!bookInput[i].value) formValidation()
 //     }
-// }
+}
 
 // submit form button event listener
 
 addBookButton.addEventListener('click', () => {
-    //  formValidation()    
+    
+    
+    
+    formValidation()
+
     for (i = 0; i < 3; i++){
         // if (bookInput[i].value) errorMsg[i].textContent = ''
         if (!bookInput[i].value) return
@@ -107,7 +103,10 @@ addBookButton.addEventListener('click', () => {
 // })
 // }
 
-
+addBook.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+  });
 
 // display whole library function( mb need optimization) 
 
@@ -223,5 +222,7 @@ function statusButtonEvents(){
         });
     });
 }
+
+
 
    
