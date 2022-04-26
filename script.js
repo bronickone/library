@@ -47,7 +47,7 @@ newBookButton.addEventListener('click', () => {
         bookInput[i].value = ''
     }
                   
-    // hideOnOutsideClick()
+    hideOnOutsideClick()
     addBook.style.display = ('grid')         
 })
 
@@ -92,16 +92,16 @@ addBookButton.addEventListener('click', () => {
 
 // function for hide form box when click outside
 
-// function hideOnOutsideClick() {
-// document.addEventListener( 'click', (event) => {
-//     const form = document.getElementById('form')
-// 	const withinBoundaries = event.composedPath().includes(form);
+function hideOnOutsideClick() {
+document.addEventListener( 'click', (event) => {
+
+	const withinBoundaries = event.composedPath().includes(addBook);
  
-// 	if ( ! withinBoundaries ) {
-// 		form.style.display = ('none') 
-// 	}
-// })
-// }
+	if ( ! withinBoundaries ) {
+		addBook.style.display = ('none') 
+	}
+}, once = true)
+}
 
 addBook.addEventListener("submit", (e) => {
     e.preventDefault();

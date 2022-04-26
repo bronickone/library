@@ -155,7 +155,7 @@ form[class="add-book"]{
 form[class="add-book"] label{
     font-size: 1.2rem;
     font-weight: 500;
-    color: rgb(17, 17, 59);
+    color: rgb(255, 255, 255);
 }
 
 form[class="add-book"] .closeForm{
