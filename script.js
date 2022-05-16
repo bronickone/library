@@ -20,12 +20,46 @@ class Book {
 //   }
 
   //some initaial books 
-
-   const book1 = new Book('Kobzar', 'Taras Shevchenko', '300', false)     
-   const book2 = new Book('1984', 'George Orwell', '500', true)
+  const newLibButton = document.querySelector('.new-lib')
+  
+  newLibButton.addEventListener('click', () => {
+   const book1 = new Book('Kobzar', 'Taras Shevchenko', '720', false)     
+   const book2 = new Book('Nineteen Eighty-Four', 'George Orwell', '312', true)
+   const book3 = new Book('Solaris', 'Stanislaw Lem', '204', true)
+   const book4 = new Book('Hyperion', 'Dan Simmons', '482', true)
+   const book5 = new Book('The Moomins and the Great Flood', 'Tovve Janson', '52', true)
+   const book6 = new Book('The Shining', 'Stephen king', '447', true)
+   const book7 = new Book('The Art of Loving', 'Erich Fromm', '133', true)
+   const book8 = new Book('The Hobbit, or There and Back Again', 'J. R. R. Tolkien', '310', true)
+   const book9 = new Book('A Wild Sheep Chase', 'Haruki Murakami', '299', true)
+   const book10 = new Book('A Clockwork Orange', 'Anthony Burgess', '192', false)
+   const book11 = new Book('The Wonderful Wizard of Oz', 'L. Frank Baum', '272', true)
+   const book12 = new Book(`Harry Potter and the Philosopher's Stone`, 'J. K. Rowling', '223', true)
+   const book14 = new Book('The Secret Doctrine', 'Helena Blavatsky', '500', false)
+   const book15 = new Book('The Science of Differentiation', 'Ra Uru Hu & Linda Bunnell', '444', true)
+   const book16 = new Book('The Art of Happiness', 'Dalai-lama &  Howard Cutler', '352', true)
+   
+//    for (let i = 1; i <=16; i++){
+//        myLibrary.push('book' + i)
+//    }
+   
    myLibrary.push(book1)
    myLibrary.push(book2)
-
+   myLibrary.push(book3)
+   myLibrary.push(book4)
+   myLibrary.push(book5)
+   myLibrary.push(book6)
+   myLibrary.push(book7)
+   myLibrary.push(book8)
+   myLibrary.push(book9)
+   myLibrary.push(book10)
+   myLibrary.push(book11)
+   myLibrary.push(book12)
+   myLibrary.push(book14)
+   myLibrary.push(book15)
+   myLibrary.push(book16)
+   printLibrary()
+  })
 
   //  add book to library function
   const bookInput = document.querySelectorAll('.book-input')

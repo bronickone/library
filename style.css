@@ -12,14 +12,16 @@
 
 .main-container{
     display: grid;
-    grid-template-rows: 1fr 1fr 10fr 1fr;
+    grid-template-rows: 1fr 1fr 60fr 1fr;
 
 }
-
-button[class="new-book"]{
+.main-buttons{
     justify-self: start;
-    margin-left: 3rem;
     align-self: center;
+    margin-left: 1rem;
+}
+.new-book, .new-lib{
+    margin-left: 1rem;
     width: 7rem;
     height: 2rem;
     color: white;
@@ -98,7 +100,12 @@ button:active{
 }
 .bookPages, .bookAuthor, .bookTitle{
     font-family: 'Russo One', serif;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.bookTitle{
+    color: rgb(0, 2, 121);
 }
 
 .bookPages{
