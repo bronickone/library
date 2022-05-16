@@ -1,16 +1,22 @@
 let myLibrary = [];                  
 
-//book consrtuctor     
+//book class  
 
-function Book(title, author, pages, status) {                                         
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.status = status
-  }
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.status = status
+    }
+}
 
-//   Book.prototype.toggleStatus = function() {
-//     this.status = (!this.status)  
+
+// function Book(title, author, pages, status) {                                         
+//     this.title = title
+//     this.author = author
+//     this.pages = pages
+//     this.status = status
 //   }
 
   //some initaial books 
@@ -34,7 +40,6 @@ function addBookToLibrary() {
         myLibrary.push(book)
   }
 
-
 const books = document.querySelector('.books')
 const addBook = document.querySelector('.add-book')
 const newBookButton = document.querySelector('.new-book')  
@@ -45,68 +50,42 @@ const addBookButton = document.querySelector('.add-book-button')
 newBookButton.addEventListener('click', () => {  
     for (i = 0; i < 3; i++){                                        //Clear input fields. need external clear function(?)
         bookInput[i].value = ''
-    }
-                  
+    }               
     hideOnOutsideClick()
-    addBook.style.display = ('grid')         
+    // formAnim('formAppear', 'grid', 1)
+     addBook.style.display = ('grid')         
 })
-
-
-
-
-
-function formValidation(){
-    
-    // for (i = 0; i < 3; i++){
-    //     bookInput[i].setCustomValidity("Fill the field");
-    //     // if (!bookInput[i].value) formValidation()
-    // }
-    
-     
-    
-
-//     for (i = 0; i < 3; i++){
-//         // bookInput[i].setCustomValidity("Fill the field");
-//         if (!bookInput[i].value) formValidation()
-//     }
-}
 
 // submit form button event listener
 
 addBookButton.addEventListener('click', () => {
     
-    
-    
-    formValidation()
-
-    for (i = 0; i < 3; i++){
-        // if (bookInput[i].value) errorMsg[i].textContent = ''
+    for (i = 0; i < 3; i++){     
         if (!bookInput[i].value) return
-            // errorMsg[i].textContent = '*Fill this field'  
     }
 
     addBookToLibrary()                     
     printLibrary()
-    addBook.style.display = ('none')
+    addBook.style.display = 'none'
+    // formAnim('formDis', 'none', 300);
 })
 
 // function for hide form box when click outside
 
 function hideOnOutsideClick() {
 document.addEventListener( 'click', (event) => {
-
 	const withinBoundaries = event.composedPath().includes(addBook);
  
-	if ( ! withinBoundaries ) {
-		addBook.style.display = ('none') 
+	if ( ! withinBoundaries ) {	
+        addBook.style.display = 'none'    
 	}
+
 }, once = true)
 }
 
 addBook.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-  });
+    e.preventDefault();  
+})
 
 // display whole library function( mb need optimization) 
 
@@ -152,51 +131,46 @@ function printLibrary(){
         card.appendChild(statusButton)
         card.appendChild(removeButton)
         booksListAfter.appendChild(card)
-        console.log(unit)    
-        // statusButton.addEventListener('click', () => {
-        //     unit.toggleStatus()
-        //     console.log(unit)
-        //     printLibrary()
-        // })    
+        console.log(unit)     
     }
     
     books.appendChild(booksListAfter)
     removeButtonEvents()
-    statusButtonEvents()   
+    statusButtonEvents()
+    addBook.style.display = 'none'  
 }
 
 printLibrary()
 
-// function buttonEvents(buttonsName){                                       //try to create universal buttons function
-//     const buttonsName = document.querySelectorAll('.' + `${buttonsName}`)
-//     let buttonsArray = Array.from(buttons)
-// }
 
 const closeForm = document.querySelector('.closeForm')
+
 //close Form button eventListener
 
 closeForm.addEventListener('click', () => {
-    addBook.style.display = ('none')
-  
+    addBook.style.display = 'none'
+   //formAnim('formDis', 'none', 300);
 })
 
+//element animation function
 
-
+function formAnim(animClass, displayArg, len){
+    console.log(animClass)
+    addBook.classList.add(animClass)
+    setTimeout(() => {  addBook.style.display = (displayArg) 
+                        addBook.classList.remove(animClass) 
+                     }, len);  
+}
 
 //function for create event listeners of remove buttons list
 
-function removeButtonEvents(){  
-                                       
-    const removeButtons = document.querySelectorAll('.removeButton')
-    console.log(removeButtons)
-    let removeButtonsArray = Array.from(removeButtons)
-    console.log(removeButtonsArray)
-    
 
+
+function removeButtonEvents(){                                         
+    const removeButtons = document.querySelectorAll('.removeButton')
+    let removeButtonsArray = Array.from(removeButtons)
     removeButtonsArray.forEach((button) => {
         button.addEventListener('click', () => {
-                console.log(removeButtonsArray)
-                console.log(removeButtons)
                 myLibrary.splice(removeButtonsArray.indexOf(button),1);
                 printLibrary()
         });
@@ -211,10 +185,6 @@ function statusButtonEvents(){
     
     statusButtonsArray.forEach((button) => {
         button.addEventListener('click', () => {
-
-                // let localStatus = myLibrary[statusButtonsArray.indexOf(button)].status;
-                // localStatus = !(localStatus)
-                // myLibrary[statusButtonsArray.indexOf(button)].status = localStatus;
                 myLibrary[statusButtonsArray.indexOf(button)].status = 
                 !(myLibrary[statusButtonsArray.indexOf(button)].status)
                 
